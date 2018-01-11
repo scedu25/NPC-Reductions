@@ -1,20 +1,12 @@
 Our approach to this assignment would be for one partner to create a solveClique class that finds all of the cliques in the graph and then returns the maximum clique. Then the other partner would make a solve3CNF class that takes a CNF statement, and translates it into a clique problem. Then the solveClique class can find the maximum clique of that graph which would lead us to our assignments of True and False for the CNF. The same would be done similarly to the ISET problem. This reduction is possible because a clique problem, CNF, and ISET are all NP-Complete problems. More specifically our 3CNF approach was to read in the CNF assignments from the text file and add them to an arraylist. Then our program will traverse through the arraylist and apply rules that allow us to draw edges to different nodes, thus making an adjacency matrix. Then this matrix is sent to the solveClique class to find the maximum clique that will also output the true/false assignments. The solveClique class uses a brute force or backtracking approach for finding all cliques of a graph and eventually returning the largest one. We did run into a slight problem during this assignment. When the solve3CNF creates an adjacency matrix and is sent to the solveClique class, the solveClique method has an extremely long run time. This is because there are so many possible graphs that could be created from the text file that was provided for this assignment. We are sure that our program does work, because the first 15 assignments complete quickly and correctly, but the bigger graphs after that begin to have problems. You will be able to analyze and understand this from our outputs below. 
+
 Output examples: 
 Compilation
-Joshuas-MacBook-Pro:program1 josh$ ls
-Graph.java		graphs16.txt		solveISET.java
-Vertex.java		solve3CNF.java
-cnfs16.txt		solveClique.java
-Joshuas-MacBook-Pro:program1 josh$ javac Graph.java
-Joshuas-MacBook-Pro:program1 josh$ javac Vertex.java
-jJoshuas-MacBook-Pro:program1 josh$ javac solveClique.java
-Joshuas-MacBook-Pro:program1 josh$ javac solveISET.java
-Joshuas-MacBook-Pro:program1 josh$ javac solve3CNF.java
-
 
 solveClique.java
 
-Joshuas-MacBook-Pro:program1 josh$ java solveClique
+java solveClique "graphs16.txt"
+
 * Max Cliques of graphs in graphs16.txt
     (|V|,|E|) Cliques (size, ms used)
 G1 (2,0) {0} (size=1, 1 ms)
@@ -85,10 +77,8 @@ G60 (60,1228) {0,7,15,4,14,17,20,24,33,34,47,55} (size=12, 167 ms)
 
 solve3CNF.java
 
-Joshuas-MacBook-Pro:program1 josh$ java solve3CNF 
-Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: 0
-	at solve3CNF.main(solve3CNF.java:37)
-Joshuas-MacBook-Pro:program1 josh$ java solve3CNF "cnfs16.txt"
+java solve3CNF "cnfs16.txt"
+
 3CNF No.1:[n = 3 k = 9]  No 9-clique; no solution (18 ms)
 3CNF No.2:[n = 3 k = 8]  Assignments: [A1=T A2=F A3=F ] (25 ms)
 3CNF No.3:[n = 3 k = 9]  No 9-clique; no solution (31 ms)
@@ -108,7 +98,8 @@ Joshuas-MacBook-Pro:program1 josh$ java solve3CNF "cnfs16.txt"
 
 solveISET.java
 
-^CJoshuas-MacBook-Pro:program1 josh$ java solveISET 
+java solveISET "graphs16.txt"
+
 * Max Independent Sets in graphs in graphs16.txt : graphs16.txt  (reduced to K-Clique) *
     (|V|,|E|) Independent Set (size, ms used)
 G1 (2,0) {0,1} (size=2, 1 ms)
